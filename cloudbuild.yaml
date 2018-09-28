@@ -21,6 +21,10 @@ steps:
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/discord-bot:$BUILD_ID', '.' ]
 - name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/$PROJECT_ID/discord-bot:$BUILD_ID"]
+- name: 'gcr.io/cloud-builders/docker'
+  args: ["tag", "gcr.io/$PROJECT_ID/discord-bot:$BUILD_ID" "gcr.io/$PROJECT_ID/discord-bot:latest"]
+- name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "gcr.io/$PROJECT_ID/discord-bot:latest"]
 - name: 'roffe/kubectl'
   args:
   - kubectl
