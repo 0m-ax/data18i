@@ -16,7 +16,7 @@ steps:
   - --plaintext-file=settings.js
   - --location=global
   - --keyring=discord-bot
-  - --key=cloudbuild
+  - --key=cloud-build
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/discord-bot:$BUILD_ID', '.' ]
 - name: 'gcr.io/cloud-builders/docker'
