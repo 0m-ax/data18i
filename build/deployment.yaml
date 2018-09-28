@@ -17,3 +17,16 @@ spec:
       containers:
       - name: discord-bot
         image: gcr.io/main-194214/discord-bot:latest
+      volumeMounts:
+      - name: db
+        mountPath: /app/db
+    volumes:
+    - name: db
+      flexVolume:
+        driver: "fstab/cifs"
+        fsType: "cifs"
+        secretRef:
+          name: "cifs-secret"
+        options:
+          networkPath: "//u188054.your-storagebox.de/u188054-sub1/db"
+          mountOptions: "dir_mode=0755,file_mode=0644,noperm"
