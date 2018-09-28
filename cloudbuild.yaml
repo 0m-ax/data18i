@@ -7,7 +7,7 @@ steps:
   - --plaintext-file=build/kubeconfig.yaml
   - --location=global
   - --keyring=discord-bot
-  - --key=cloudbuild
+  - --key=cloud-build
 - name: gcr.io/cloud-builders/gcloud
   args:
   - kms
