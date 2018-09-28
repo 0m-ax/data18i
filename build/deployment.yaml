@@ -28,5 +28,5 @@ spec:
           secretRef:
             name: "storage-box"
           options:
-            networkPath: "//u188054.your-storagebox.de/u188054-sub1/db"
+            networkPath: "//u188054.your-storagebox.de/u188054-sub1"
             mountOptions: "dir_mode=0755,file_mode=0644,noperm"
