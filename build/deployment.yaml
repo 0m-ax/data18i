@@ -26,7 +26,7 @@ spec:
         driver: "fstab/cifs"
         fsType: "cifs"
         secretRef:
-          name: "cifs-secret"
+          name: "storage-box"
         options:
           networkPath: "//u188054.your-storagebox.de/u188054-sub1/db"
           mountOptions: "dir_mode=0755,file_mode=0644,noperm"
