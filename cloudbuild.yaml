@@ -1,0 +1,32 @@
+steps:
+- name: gcr.io/cloud-builders/gcloud
+  args:
+  - kms
+  - decrypt
+  - --ciphertext-file=build/kubeconfig.yaml.enc
+  - --plaintext-file=build/kubeconfig.yaml
+  - --location=global
+  - --keyring=discord-bot
+  - --key=cloudbuild
+- name: gcr.io/cloud-builders/gcloud
+  args:
+  - kms
+  - decrypt
+  - --ciphertext-file=settings.js.enc
+  - --plaintext-file=settings.js
+  - --location=global
+  - --keyring=discord-bot
+  - --key=cloudbuild
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/discord-bot:$BUILD_ID', '.' ]
+- name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "gcr.io/$PROJECT_ID/discord-bot:$BUILD_ID"]
+- name: 'roffe/kubectl'
+  args:
+  - kubectl
+  - apply
+  - --kubeconfig=build/kubeconfig.yaml
+  - -f
+  - build/deployment.yaml
+images:
+- 'gcr.io/$PROJECT_ID/discord-bot:$BUILD_ID'

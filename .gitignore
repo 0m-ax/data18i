@@ -1,0 +1,4 @@
+kubeconfig.yaml
+node_modules
+secret.yaml
+settings.js
