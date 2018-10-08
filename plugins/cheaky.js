@@ -22,7 +22,7 @@ module.exports = function ({settings,registarRegex,client,plugins,registarComman
         message.channel.send(attachment);
     })
     function waterfall(){
-        const attachment = new Attachment('https://developers.redhat.com/blog/wp-content/uploads/2015/01/docker-whale-home-logo.png');
+        const attachment = new Attachment('https://media.discordapp.net/attachments/486433511335657475/498747267755540480/unknown.png');
         message.reply(attachment)
     }
     registarRegex(/w\s*a\s*t\s*e\s*r\s*f\s*a\s*l\s*l/i,waterfall)
