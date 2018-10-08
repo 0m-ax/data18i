@@ -4,19 +4,21 @@ const helloDB = data18iNS.db('hello');
 let message = "Hey I am Data18I bot. I live in the cloud floating around on my docker whale guided by kubernetes. If you're weird you can look inside me here https://github.com/0m-ax/data18i (pls dont it hurts)";
 module.exports = async function ({client}){
     client.on('guildCreate',async (guild)=>{
-        let dc = await getDefaultChannel(guild);
-        if(dc){
-            dc.send(message)
-        }
+        sendTo(guild)
     })
     for(let guild of client.guilds){
         guild = guild[1];
-        if(!await helloDB.load(guild.id,false)){
-            await helloDB.save(guild.id,true);
-            let dc = await getDefaultChannel(guild);
-            if(dc){
-                dc.send(message)
-            }
+        sendTo(guild)
+    }
+}
+async function sendTo(guild){
+    let hasSent = await helloDB.load(guild.id,false)
+    console.log(guild.id,resp)
+    if(!hasSent){
+        await helloDB.save(guild.id,true);
+        let dc = await getDefaultChannel(guild);
+        if(dc){
+            dc.send(message)
         }
     }
 }

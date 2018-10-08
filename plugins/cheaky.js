@@ -21,7 +21,7 @@ module.exports = function ({settings,registarRegex,client,plugins,registarComman
         // Send the attachment in the message channel
         message.channel.send(attachment);
     })
-    function waterfall(){
+    function waterfall(message){
         const attachment = new Attachment('https://media.discordapp.net/attachments/486433511335657475/498747267755540480/unknown.png');
         message.reply(attachment)
     }
