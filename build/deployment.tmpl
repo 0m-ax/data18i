@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: discord-bot
-        image: gcr.io/main-194214/discord-bot:latest
+        image: gcr.io/main-194214/discord-bot:$BUILD
         volumeMounts:
         - name: db
           mountPath: /app/db
