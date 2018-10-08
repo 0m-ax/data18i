@@ -21,4 +21,9 @@ module.exports = function ({settings,registarRegex,client,plugins,registarComman
         // Send the attachment in the message channel
         message.channel.send(attachment);
     })
+    function waterfall(){
+        const attachment = new Attachment('https://developers.redhat.com/blog/wp-content/uploads/2015/01/docker-whale-home-logo.png');
+        message.reply(attachment)
+    }
+    registarRegex(/w\s*a\s*t\s*e\s*r\s*f\s*a\s*l\s*l/i,waterfall)
 }

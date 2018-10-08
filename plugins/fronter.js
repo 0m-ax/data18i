@@ -22,7 +22,10 @@ module.exports = function ({settings,client}){
                 }
             }).filter(({pubDate})=>pubDate).sort((a,b)=>{
                 return a.pubDate-b.pubDate;
-            })
+            }).filter(({guid})=>!fronterDB.get('item:'+guid,false))
+            for(item of items){
+                fronterDB.set('item:'+item.guid,true)
+            }
             let lastID = await fronterDB.load('lastID','')
             let itemIndex = items.findIndex(({guid})=>{
                 return guid == lastID
