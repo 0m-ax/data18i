@@ -12,6 +12,7 @@ module.exports = async function ({client}){
     }
 }
 async function sendTo(guild){
+    return;
     try {
         let hasSent = await helloDB.load(guild.id,false)
         console.log(guild.id,hasSent)
