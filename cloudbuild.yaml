@@ -17,7 +17,7 @@ steps:
   - --location=global
   - --keyring=discord-bot
   - --key=cloud-build
-- name: 'gcr.io/cloud-builders/go:debian'
+- name: 'ubuntu'
   entrypoint: 'bash'
   env:
   - 'BUILD=$BUILD_ID'
