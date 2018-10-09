@@ -22,7 +22,7 @@ module.exports = function ({settings,registarRegex,client,plugins,registarComman
         message.channel.send(attachment);
     })
     registarRegex(/\+cat/i,(message)=>{
-        message.reply('+dog')
+        message.channel.send('+dog')
     })
     function waterfall(message){
         const attachment = new Attachment('https://media.discordapp.net/attachments/486433511335657475/498747267755540480/unknown.png');
