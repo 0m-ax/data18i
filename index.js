@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const SETTINGS = require('./settings.js');
+const latinise = require('./latinise')
 
 let plugins = [];
 client.on('ready', () => {
@@ -14,7 +15,7 @@ client.on('ready', () => {
             plugin.regexs.push({
                 regex,
                 callback,
-                options
+                options,
             })
         }
         require(pluginDefintion.file)({
@@ -35,7 +36,13 @@ client.on('ready', () => {
 client.on('message', message => {
     for(let plugin of plugins){
         for(let regex of plugin.regexs){
-            if((regex.options.includeBots || !message.author.bot) && regex.regex.test(message.content)){
+            if(
+                (regex.options.includeBots || !message.author.bot) &&
+                (
+                    regex.regex.test(message.content) ||
+                    (regex.options.latinise && regex.regex.test(latinise(message.content)))
+                )
+            ){
                 regex.callback(message)
             }
         }

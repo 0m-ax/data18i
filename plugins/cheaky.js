@@ -28,5 +28,5 @@ module.exports = function ({settings,registarRegex,client,plugins,registarComman
     registarRegex(/w\s*a\s*t\s*e\s*r\s*f\s*a(\s*l|i){2}/i,function(message){
         const attachment = new Attachment('https://media.discordapp.net/attachments/486433511335657475/498747267755540480/unknown.png');
         message.reply(attachment)
-    })
+    },{latinise:true})
 }
