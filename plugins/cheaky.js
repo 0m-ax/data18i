@@ -1,5 +1,5 @@
 const { Attachment } = require('discord.js');
-
+const fetch = require('node-fetch')
 module.exports = function ({settings,registarRegex,client,plugins,registarCommand}){
     registarRegex(/\ud83c\udf46/i,(message)=>{
         message.reply(':wink:')
@@ -21,12 +21,12 @@ module.exports = function ({settings,registarRegex,client,plugins,registarComman
         // Send the attachment in the message channel
         message.channel.send(attachment);
     })
-    // registarRegex(/\+cat/i,(message)=>{
-    //     message.channel.send('+dog')
+    // registarRegex(/\+cow/i,async (message)=>{
+    //     const attachment = new Attachment('https://source.unsplash.com/random/?cow');        
+    //     message.channel.send(attachment);
     // })
-    function waterfall(message){
+    registarRegex(/w\s*a\s*t\s*e\s*r\s*f\s*a(\s*l|i){2}/i,function(message){
         const attachment = new Attachment('https://media.discordapp.net/attachments/486433511335657475/498747267755540480/unknown.png');
         message.reply(attachment)
-    }
-    registarRegex(/w\s*a\s*t\s*e\s*r\s*f\s*a\s*l\s*l/i,waterfall)
+    })
 }
