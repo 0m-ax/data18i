@@ -1,5 +1,7 @@
 const { Attachment } = require('discord.js');
 const fetch = require('node-fetch')
+const {VM} = require('vm2');
+const lolcode = require('lolcode/parser')
 module.exports = function ({settings,registarRegex,client,plugins,registarCommand}){
     registarRegex(/\ud83c\udf46/i,(message)=>{
         message.reply(':wink:')
@@ -28,5 +30,36 @@ module.exports = function ({settings,registarRegex,client,plugins,registarComman
     registarRegex(/w\s*a\s*t\s*e\s*r\s*f\s*a(\s*l|i){2}/i,function(message){
         const attachment = new Attachment('https://media.discordapp.net/attachments/486433511335657475/498747267755540480/unknown.png');
         message.reply(attachment)
-    },{latinise:true})
+    },{latinise:true});
+    registarRegex(/```LOLCODE\n([^`]+)\n```(?:\n```\n([^`]+)\n```)?/,function  (message,things){
+        console.log('arguments',things[1])
+        let inputStack = things[2]?things[2].split("\n"):[];
+        const vm = new VM({
+            timeout: 1000,
+            sandbox: {
+                prompt:function(ask){
+                    let resp = inputStack.shift()
+                    message.reply("LOLZ IN:"+ask+": "+resp )
+                    return resp;
+                },
+                console:{
+                    log:function(value){
+                        message.reply("LOLZ OUT:"+value)
+                    }
+                }
+            }
+        });
+        let output = lolcode(things[1],function(error, warn, js_out){
+            if(warn){
+                message.reply("LOLZ WARN:"+warn)
+            }
+            if(error){
+                message.reply("LOLZ ERROR:"+error)
+            }
+            if(js_out){
+                vm.run(js_out)
+            }
+        });
+       
+    })
 }

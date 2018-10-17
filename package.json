@@ -10,8 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^11.4.2",
+    "lolcode": "^0.1.2",
     "node-fetch": "^2.2.0",
     "rss-parser": "^3.4.3",
-    "trivialdb": "^3.0.0-rc.2"
+    "trivialdb": "^3.0.0-rc.2",
+    "vm": "^0.1.0",
+    "vm2": "^3.6.3"
   }
 }

@@ -43,7 +43,7 @@ client.on('message', message => {
                     (regex.options.latinise && regex.regex.test(latinise(message.content)))
                 )
             ){
-                regex.callback(message)
+                regex.callback(message,regex.regex.exec(message.content))
             }
         }
     }
