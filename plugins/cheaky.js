@@ -29,7 +29,16 @@ module.exports = function ({settings,registarRegex,client,plugins,registarComman
     // })
     registarRegex(/w\s*a\s*t\s*e\s*r\s*f\s*a(\s*l|i){2}/i,function(message){
         const attachment = new Attachment('https://media.discordapp.net/attachments/486433511335657475/498747267755540480/unknown.png');
-        message.reply(attachment)
+        message.reply(attachment);
+        let role = message.guild.roles.find(r => r.name === "Jailed");
+        if(role){
+            message.member.addRole(role)
+            setTimeout(()=>{
+                message.member.removeRole(role)
+            },1000*60)
+        }else{
+            console.log("Nope role not found");
+        }
     },{latinise:true});
     registarRegex(/```LOLCODE\n([^`]+)\n```(?:\n```\n([^`]+)\n```)?/,function  (message,things){
         console.log('arguments',things[1])
