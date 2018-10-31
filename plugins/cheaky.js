@@ -29,11 +29,13 @@ module.exports = function ({settings,registarRegex,client,plugins,registarComman
             },1000*60*5)
         }
     })
-    registarRegex(/\u0432\u043E\u0434\u043A\u0430/i,(message)=>{
+    registarRegex(/\u0432\u043E\u0434\u043A\u0430/i,overlord)
+    registarRegex(/\u0433\u043E\u0440\u0456\u043B\u043A\u0430/i,overlord)
+    function overlord(message){
         message.channel.send(client.users.get('141327218549719040')+` Calling Ukrainian Overlord.`,{
             file:'https://i.imgur.com/ZBurGq3.jpg'
         })
-    })
+    }
     registarRegex(/\ud83c\udf46/i,(message)=>{
         message.reply(':wink:')
     })
