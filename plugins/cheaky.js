@@ -33,7 +33,7 @@ module.exports = function ({settings,registarRegex,client,plugins,registarComman
     registarRegex(/\u0433\u043E\u0440\u0456\u043B\u043A\u0430/i,overlord)
     function overlord(message){
         message.channel.send(client.users.get('141327218549719040')+` Calling Ukrainian Overlord.`,{
-            file:'https://i.imgur.com/ZBurGq3.jpg'
+            file:'https://cdn.discordapp.com/attachments/499145395553828864/509311820629278720/12_point_to_Grifindor.png'
         })
     }
     registarRegex(/\ud83c\udf46/i,(message)=>{
